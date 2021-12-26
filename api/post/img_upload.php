@@ -22,7 +22,7 @@ $fileSize  =  $_FILES['Event_Img']['size'];
 		
 if(empty($fileName))
 {
-	$errorMSG = json_encode(array("message" => "Please select image", "status" => "400"));	
+	$errorMSG = json_encode(array("message" => "Please select image", "error" => true));	
 	echo $errorMSG;
 }
 else
