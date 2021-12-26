@@ -22,7 +22,7 @@ $fileSize  =  $_FILES['Event_Img']['size'];
 		
 if(empty($fileName))
 {
-	$errorMSG = json_encode(array("message" => "please select image", "status" => false));	
+	$errorMSG = json_encode(array("message" => "Please select image", "status" => "400"));	
 	echo $errorMSG;
 }
 else
@@ -41,23 +41,23 @@ else
 		{
 			// check file size '5MB'
 			if($fileSize < 5000000){
-                print_r($tempPath . $upload_path . $fileName);
+                // print_r($tempPath . $upload_path . $fileName);
 				move_uploaded_file($tempPath, $upload_path . $fileName); // move file from system temporary path to our upload folder path 
 			}
 			else{		
-				$errorMSG = json_encode(array("message" => "Sorry, your file is too large, please upload 5 MB size", "status" => false));	
+				$errorMSG = json_encode(array("message" => "Sorry, your file is too large, please upload under 5 MB size", "error" => true));	
 				echo $errorMSG;
 			}
 		}
 		else
 		{		
-			$errorMSG = json_encode(array("message" => "Sorry, file already exists check upload folder", "status" => false));	
+			$errorMSG = json_encode(array("message" => "Sorry, file already exists check upload folder", "error" => true));	
 			echo $errorMSG;
 		}
 	}
 	else
 	{		
-		$errorMSG = json_encode(array("message" => "Sorry, only JPG, JPEG, PNG & GIF files are allowed", "status" => false));	
+		$errorMSG = json_encode(array("message" => "Sorry, only JPG, JPEG, PNG & GIF files are allowed", "error" => true));	
 		echo $errorMSG;		
 	}
 }
@@ -91,5 +91,5 @@ if(!isset($errorMSG))
         $message=$th->getMessage();
         echo $message;
     }
-	echo json_encode(array("message" => "Image Uploaded Successfully", "status" => true));	
+	echo json_encode(array("message" => "Image Uploaded Successfully", "error" => false));	
 }

@@ -38,7 +38,8 @@
 
             $post_item = array(
                 'message' => 'Post Created',
-                'Event_Id' => $Event_Id
+                'Event_Id' => $Event_Id,
+                "error" => false
             );
 
             // Push to "data"
@@ -50,6 +51,6 @@
     }
     else{
         echo json_encode(
-            array('message' => 'Post Not Created', "status" => false)
+            array('message' => 'Post Not Created', "event" => true)
         );
     }

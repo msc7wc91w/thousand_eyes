@@ -32,12 +32,12 @@
     // Create post
     if($success){
         echo json_encode(
-            array('message' => 'Post Created', "status" => true)
+            array('message' => 'Post Created', "error" => false)
         );
     }
     else{
         echo json_encode(
-            array('message' => 'Post Not Created', "status" => false)
+            array('message' => 'Post Not Created', "error" => true)
         );
     }
 
